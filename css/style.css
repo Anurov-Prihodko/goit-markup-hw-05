@@ -58,6 +58,7 @@ img {
   --background-team: #f5f4fa;
   --icon-background: rgba(255, 255, 255, 0.1);
   --what-we-do-background: rgba(47, 48, 58, 0.8);
+  --card-background: rgba(33, 150, 243, 0.9);
   --border-work-examples: #eeeeee;
   --portfolio-border: #ececec;
   --hero-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
@@ -182,11 +183,11 @@ body {
 
 .strip::after {
   position: absolute;
-  display: block;
+  /* display: block; */
   left: 0;
   bottom: 0;
-  /* left: 50%; */
-  /* transform: translate(-50%, 0); */
+  /* left: 50%;
+  transform: translate(-50%, 0); */
   content: '';
 
   width: 100%;
@@ -198,7 +199,7 @@ body {
   animation-duration: var(--time);
   animation-timing-function: var(--function-time);
   /* animation-fill-mode: forwards; */
-  transform-origin: left;
+  transform-origin: center;
 }
 
 @keyframes underline {
@@ -319,6 +320,60 @@ body {
   /* outline: 1px solid red; */
 }
 
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+
+  opacity: 1;
+  transition: opaciti var(--time) var(--function-time);
+}
+
+.backdrop.is-hiden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 528px;
+  height: 581px;
+  padding: 15px;
+
+  background-color: #ffffff;
+}
+
+.backdrop-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 8px;
+  margin-top: 8px;
+
+  cursor: pointer;
+
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.backdrop-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: red;
+
+  transform: translate(-50%, -50%);
+}
 /* ======== HERO BLOCK END ========= */
 
 /* ======== FEATURES BLOCK ========= */
@@ -379,6 +434,7 @@ body {
 .what-we-do-list {
   display: flex;
   position: relative;
+  z-index: -1;
 }
 
 .what-we-do-item:not(:last-child) {
@@ -755,6 +811,40 @@ body {
 
 .work-examples-item:nth-last-child(-n + 3) {
   margin-bottom: 0;
+}
+
+.tehnocrack-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.tehnocrack-text {
+  font-family: var(--text-font);
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.556;
+  letter-spacing: 0.03em;
+  color: var(--white-color);
+  padding: 63px 24px;
+}
+
+.tehnocrack {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--card-background);
+  opacity: 0;
+
+  transition: transform var(--time) var(--function-time);
+  transform: translateY(100%);
+}
+
+.work-examples-link:hover .tehnocrack,
+.work-examples-link:focus .tehnocrack {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 /* alternative */

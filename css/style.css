@@ -829,7 +829,8 @@ body {
   background-color: rgba(0, 0, 0, 0.2);
 
   opacity: 1;
-  transition: opacity var(--time) var(--function-time);
+  transition: opacity var(--time) var(--function-time),
+    visibility var(--time) var(--function-time);
 }
 
 .modal {
